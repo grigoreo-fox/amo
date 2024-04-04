@@ -1,4 +1,4 @@
-import type { With } from "../../typings/utility.ts";
+import type { Order, With } from "../../typings/utility.ts";
 import type { ResponseGetEventById, ResponseGetEvents, ResponseGetEventsTypes } from "./types.ts";
 import { Endpoint } from "../../core/endpoint.ts";
 import { FilterLike } from "../../helpers/filter.ts";
@@ -18,6 +18,7 @@ export class EventApi extends Endpoint {
       never,
       never
     >;
+    order?: Order<["updated_at", "created_at", "id"]>;
   }): Promise<ResponseGetEvents> {
     return this.rest.get<ResponseGetEvents>({
       url: "/api/v4/events",
